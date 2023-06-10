@@ -9,7 +9,6 @@ const findLastUserId = async () => {
 
 export const generateUserId = async () => {
   const currentId = (await findLastUserId()) || String(0).padStart(6, '0')
-  console.log(currentId)
   const incrementId = (parseInt(currentId) + 1).toString().padStart(6, '0')
 
   return incrementId // Return the generated ID with a prefix
