@@ -1,7 +1,6 @@
-import { Model } from "mongoose";
+import { Model } from 'mongoose';
 
-
-export type IAcademicSemester ={
+export type IAcademicSemester = {
   title: string;
   year: number;
   code: string;
@@ -9,4 +8,7 @@ export type IAcademicSemester ={
   endMonth: string;
 };
 
-export type AcademicSemesterModel = Model<IAcademicSemester, Record <string, unknown>>;
+export type AcademicSemesterModel = Model<
+  IAcademicSemester,
+  Record<string, unknown>
+>;
