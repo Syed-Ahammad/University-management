@@ -3,6 +3,8 @@ import express, { Application, NextFunction, Request, Response } from 'express';
 import globalErrorHandle from './app/middleware/globalErrors';
 import httpStatus from 'http-status';
 import Routes from './app/routes';
+import { UserRoutes } from './app/modules/users/user.routes';
+import { AcademicSemesterRoutes } from './app/modules/academicSemester/academicSemester.routes';
 // import ApiError from './errors/ApiError'
 const app: Application = express();
 
@@ -12,15 +14,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Application route
-app.use("/api/v1", Routes)
+app.use('/api/v1', Routes);
 
-// app.use('/api/v1/users', UserRoutes);
-// app.use('/api/v1/academic-semester', AcademicSemesterRoutes);
+app.use('/api/v1/users', UserRoutes);
+app.use('/api/v1/academic-semester', AcademicSemesterRoutes);
 
 // global error handlers
 
 app.use(globalErrorHandle);
-
 
 //handle not found
 app.use((req: Request, res: Response, next: NextFunction) => {
@@ -36,8 +37,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   });
   next();
 });
-
-
 
 // testing
 /* app.get('/', async (req: Request, res: Response , next: NextFunction ) => {

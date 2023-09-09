@@ -1,25 +1,29 @@
-import {z} from "zod"
-import { AcademicSemesterCode, AcademicSemesterTitle, academicSemesterMonths } from "./academicSemester.constant"
+import { z } from 'zod';
+import {
+  AcademicSemesterCode,
+  AcademicSemesterTitle,
+  academicSemesterMonths,
+} from './academicSemester.constant';
 
 const CreateAcademicSemesterZodSchema = z.object({
   body: z.object({
-    title: z.enum([...AcademicSemesterTitle] as [string, ...string[]],{
-      required_error: "code is required"
+    title: z.enum([...AcademicSemesterTitle] as [string, ...string[]], {
+      required_error: 'code is required',
     }),
     year: z.number({
-      required_error: "year is required"
+      required_error: 'year is required',
     }),
-    code: z.enum([...AcademicSemesterCode] as [string, ...string[]],{
-      required_error: "code is required"
+    code: z.enum([...AcademicSemesterCode] as [string, ...string[]], {
+      required_error: 'code is required',
     }),
-    startMonth: z.enum([...academicSemesterMonths] as [string, ...string[]],{
-      required_error: "start month is needed",
+    startMonth: z.enum([...academicSemesterMonths] as [string, ...string[]], {
+      required_error: 'start month is needed',
     }),
-    endMonth: z.enum([...academicSemesterMonths] as [string, ...string[]],{
-      required_error: "end month is needed"}),
-  })
+    endMonth: z.enum([...academicSemesterMonths] as [string, ...string[]], {
+      required_error: 'end month is needed',
+    }),
+  }),
 });
-
 
 ///  Ensure 1: Route Level : Update -->  Give me title and code both , neither
 
@@ -63,4 +67,4 @@ const CreateAcademicSemesterZodSchema = z.object({
 export const AcademicSemesterValidation = {
   CreateAcademicSemesterZodSchema,
   // updateAcademicSemesterZodSchema,
-}
+};

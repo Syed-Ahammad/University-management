@@ -1,4 +1,5 @@
 import ApiError from "../../../errors/ApiError";
+import {IPaginationOptions } from "../../../interfaces/pagination";
 import { AcademicSemesterTitleCodeMapper } from "./academicSemester.constant";
 import { IAcademicSemester } from "./academicSemester.interface";
 import { AcademicSemester } from "./academicSemester.model";
@@ -13,6 +14,18 @@ const createSemester = async (payload: IAcademicSemester): Promise <IAcademicSem
   return result;
 }
 
+const getAllSemesters = (paginationOptions: IPaginationOptions)=>{
+  console.log(paginationOptions)
+
+  const {page=1, limit=5} = paginationOptions;
+
+  const skip = (page -1)*limit;
+
+  console.log(skip)
+
+
+}
+
 export const AcademicSemesterService = {
-  createSemester,
+  createSemester,getAllSemesters
 }
