@@ -6,14 +6,9 @@
     "auditLog": "C:\\Projects\\apolloNextLevel\\University-management\\logs\\winston\\errors\\.3dfe407cdcdc07a505af5b40faed77503ae84402-audit.json",
     "files": [
         {
-            "date": 1694221838939,
-            "name": "C:\\Projects\\apolloNextLevel\\University-management\\logs\\winston\\errors\\phu-2023-09-08-18-errors.log",
-            "hash": "e085d646f8c64ef4510a1478da2fc2026086116cc25a2a6ffa86d06cefb150e6"
-        },
-        {
-            "date": 1694225146451,
-            "name": "C:\\Projects\\apolloNextLevel\\University-management\\logs\\winston\\errors\\phu-2023-09-08-19-errors.log",
-            "hash": "8741c2bf58bf17873b6540d7dc8f49c338bfc370a1fbd38666eaef78bb41fbbc"
+            "date": 1694276803226,
+            "name": "C:\\Projects\\apolloNextLevel\\University-management\\logs\\winston\\errors\\phu-2023-09-09-09-errors.log",
+            "hash": "e840f0ac1452e4ca5dab2b891434c8c2b75fb348fde02388a2104c1ca0567c32"
         }
     ],
     "hashType": "sha256"

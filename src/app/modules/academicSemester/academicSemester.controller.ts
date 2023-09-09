@@ -36,7 +36,12 @@ const getAllSemesters = catchAsync(
     //   sortBy: req.query.sortBy,
     //   sortOrder: req.query.sortOrder,
     // };
-    const paginationOptions = pick(req.query, ["page", "limit", "sortby", "sortBy"])
+    const paginationOptions = pick(req.query, [
+      'page',
+      'limit',
+      'sortby',
+      'sortBy',
+    ]);
     const result = await AcademicSemesterService.getAllSemesters(
       paginationOptions
     );
@@ -52,5 +57,6 @@ const getAllSemesters = catchAsync(
 );
 
 export const AcademicSemesterController = {
-  createSemester, getAllSemesters
+  createSemester,
+  getAllSemesters,
 };
