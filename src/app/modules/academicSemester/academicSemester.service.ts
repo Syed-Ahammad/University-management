@@ -18,34 +18,33 @@ const createSemester = async (
   return result;
 };
 
+const getAllSemesters = async (
+  paginationOptions: IPaginationOptions
+): Promise<IGenericResponse<IAcademicSemester[]>> => {
+  const { page, limit, skip, sortBy, sortOrder } =
+    paginationHelper.calculationPagination(paginationOptions);
+  const sortCondition: { [key: string]: SortOrder } = {};
 
-
-
-const getAllSemesters = async (paginationOptions: IPaginationOptions):Promise<IGenericResponse<IAcademicSemester[]>> => {
-
-
-
-  const {page, limit, skip, sortBy, sortOrder} = paginationHelper.calculationPagination(paginationOptions)
-  const sortCondition: {[key:string]:SortOrder} = {}
-
-  if(sortBy && sortOrder){
+  if (sortBy && sortOrder) {
     sortCondition[sortBy] = sortOrder;
   }
-  console.log(sortCondition)
- 
-  const result = await AcademicSemester.find().sort(sortCondition).skip(skip).limit(limit);
+  console.log(sortCondition);
 
+  const result = await AcademicSemester.find()
+    .sort(sortCondition)
+    .skip(skip)
+    .limit(limit);
 
- const total = await AcademicSemester.countDocuments()
+  const total = await AcademicSemester.countDocuments();
 
- return {
-  meta: {
-    page,
-    limit,
-    total
-  },
-  data: result
-}
+  return {
+    meta: {
+      page,
+      limit,
+      total,
+    },
+    data: result,
+  };
 };
 
 export const AcademicSemesterService = {
