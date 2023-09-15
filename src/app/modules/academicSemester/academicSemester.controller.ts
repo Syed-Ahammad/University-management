@@ -4,6 +4,7 @@ import catchAsync from '../../../shared/catchAsync';
 import sendResponse from '../../../shared/sendResponse';
 import httpStatus from 'http-status';
 import pick from '../../../shared/pick';
+import { paginationFields } from '../../../constant/pagination';
 
 const createSemester = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -36,12 +37,7 @@ const getAllSemesters = catchAsync(
     //   sortBy: req.query.sortBy,
     //   sortOrder: req.query.sortOrder,
     // };
-    const paginationOptions = pick(req.query, [
-      'page',
-      'limit',
-      'sortby',
-      'sortBy',
-    ]);
+    const paginationOptions = pick(req.query, paginationFields);
     const result = await AcademicSemesterService.getAllSemesters(
       paginationOptions
     );
@@ -52,7 +48,7 @@ const getAllSemesters = catchAsync(
       message: 'Semester retrieved successfully',
       data: result,
     });
-    next();
+    // next();
   }
 );
 
