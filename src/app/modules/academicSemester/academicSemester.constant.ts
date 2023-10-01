@@ -33,4 +33,4 @@ export const AcademicSemesterTitleCodeMapper: { [key: string]: string } = {
   Fall: '03',
 };
 
-export const andConditionFields = (['title', 'code', 'year'])
+export const andConditionFields = ['title', 'code', 'year'];

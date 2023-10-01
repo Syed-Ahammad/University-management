@@ -74,6 +74,11 @@
             "date": 1696045477531,
             "name": "C:\\Projects\\apolloNextLevel\\University-management\\logs\\winston\\errors\\phu-2023-09-29-20-errors.log",
             "hash": "f934295888021e6922ee32ae80ded31b2d06b462fad985c053e5619a5841eebb"
+        },
+        {
+            "date": 1696175063999,
+            "name": "C:\\Projects\\apolloNextLevel\\University-management\\logs\\winston\\errors\\phu-2023-10-01-08-errors.log",
+            "hash": "abe79d403c677189d7a64414007acac0c50ee2996c05831949469f8ee447c51e"
         }
     ],
     "hashType": "sha256"
