@@ -12,11 +12,11 @@ process.on('uncaughtException', error => {
 let server: Server;
 async function bootstrap() {
   try {
+    await mongoose.connect(config.DatabaseUrl as string);
+    logger.info('database connection successful');
     app.listen(config.port, () => {
       logger.info(`application listening on port ${config.port}`);
     });
-    await mongoose.connect(config.DatabaseUrl as string);
-    logger.info('database connection successful');
   } catch (err) {
     errorLogger.error('failed to connect database', err);
   }

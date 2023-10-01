@@ -37,9 +37,10 @@ const getAllSemesters = catchAsync(
     //   sortBy: req.query.sortBy,
     //   sortOrder: req.query.sortOrder,
     // };
+    const filters = pick(req.query, ["searchTerms"])
     const paginationOptions = pick(req.query, paginationFields);
-    const result = await AcademicSemesterService.getAllSemesters(
-      paginationOptions
+    const result = await AcademicSemesterService.getAllSemesters(filters,
+    paginationOptions
     );
 
     sendResponse(res, {
@@ -48,11 +49,24 @@ const getAllSemesters = catchAsync(
       message: 'Semester retrieved successfully',
       data: result,
     });
-    // next();
+    next();
   }
 );
+
+const getSingleSemester = catchAsync(async(req:Request, res:Response, next: NextFunction)=>{
+const result = await AcademicSemesterService.getSingleSemester(req.params.id);
+
+sendResponse(res, {
+  statusCode: httpStatus.OK,
+  success: true,
+  message: 'Semester founded successfully',
+  data: result,
+})
+next()
+})
 
 export const AcademicSemesterController = {
   createSemester,
   getAllSemesters,
+  getSingleSemester,
 };
