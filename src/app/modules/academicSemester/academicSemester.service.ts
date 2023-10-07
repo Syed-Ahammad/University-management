@@ -81,9 +81,7 @@ const getAllSemesters = async (
   const result = await AcademicSemester.find(whereCondition)
     .sort(sortCondition)
     .skip(skip)
-    .limit(limit).exec();
-
-   
+    .limit(limit)
 
   const total = await AcademicSemester.countDocuments();
 
@@ -97,10 +95,12 @@ const getAllSemesters = async (
   };
 };
 
-const getSingleSemester = async (id: string): Promise<IAcademicSemester | null> => {
+const getSingleSemester = async (
+  id: string
+): Promise<IAcademicSemester | null> => {
   const result = await AcademicSemester.findById(id);
-console.log(id)
-  return  result;
+  console.log(id);
+  return result;
 };
 
 export const AcademicSemesterService = {
