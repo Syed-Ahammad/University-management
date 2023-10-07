@@ -68,11 +68,11 @@ const updateSemester = catchAsync(async (req: Request, res: Response) => {
     message: 'Semester founded successfully',
     data: result,
   });
-})
+});
 
 export const AcademicSemesterController = {
   createSemester,
   getAllSemesters,
   getSingleSemester,
-  updateSemester
+  updateSemester,
 };
