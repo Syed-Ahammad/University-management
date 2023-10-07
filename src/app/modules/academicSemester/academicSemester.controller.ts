@@ -50,7 +50,6 @@ const getAllSemesters = catchAsync(async (req: Request, res: Response) => {
 
 const getSingleSemester = catchAsync(async (req: Request, res: Response) => {
   const result = await AcademicSemesterService.getSingleSemester(req.params.id);
-
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
