@@ -65,7 +65,7 @@ const updateSemester = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Semester founded successfully',
+    message: 'Semester update successfully',
     data: result,
   });
 });

@@ -1,4 +1,4 @@
-import { SortOrder } from 'mongoose';
+import mongoose, { SortOrder } from 'mongoose';
 import ApiError from '../../../errors/ApiError';
 import { paginationHelper } from '../../../helpers/paginationHelper';
 import { IGenericResponse } from '../../../interfaces/common';
@@ -95,12 +95,12 @@ const getAllSemesters = async (
   };
 };
 
-const getSingleSemester = async (id: string) => {
+const getSingleSemester = async (
+  id: string
+): Promise<IAcademicSemester | null> => {
   const result = await AcademicSemester.findById(id);
-
-  return {
-    data: result,
-  };
+  console.log(id);
+  return result;
 };
 
 export const AcademicSemesterService = {
