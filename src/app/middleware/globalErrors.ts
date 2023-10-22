@@ -15,8 +15,7 @@ import { errorLogger } from '../../shared/logger';
 const globalErrorHandler: ErrorRequestHandler = (
   error,
   req: Request,
-  res: Response,
-  next: NextFunction
+  res: Response
 ) => {
   config.env === 'development'
     ? console.log(`🐱‍🏍 globalErrorHandler ~~`, { error })
@@ -70,7 +69,6 @@ const globalErrorHandler: ErrorRequestHandler = (
     errorMessages,
     stack: config.env !== 'production' ? error?.stack : undefined,
   });
-  next();
 };
 
 export default globalErrorHandler;
