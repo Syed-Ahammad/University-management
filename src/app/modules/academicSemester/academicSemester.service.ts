@@ -109,7 +109,7 @@ const updateSemester= async (id: string, payload: Partial<IAcademicSemester>) :P
     new: true
   });
   return result;
- 
+
 };
 
 const deleteSemester = async (
