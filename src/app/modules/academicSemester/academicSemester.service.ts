@@ -98,9 +98,10 @@ const getSingleSemester = async (
   id: string
 ): Promise<IAcademicSemester | null> => {
   const result = await AcademicSemester.findById(id);
-  console.log(id);
   return result;
 };
+
+
 const updateSemester = async (
   id: string,
   payload: Partial<IAcademicSemester>

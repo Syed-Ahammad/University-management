@@ -31,27 +31,19 @@ const UpdateAcademicSemesterZodSchema = z
   .object({
     body: z.object({
       title: z
-        .enum([...AcademicSemesterTitle] as [string, ...string[]], {
-          required_error: 'Title is required',
-        })
+        .enum([...AcademicSemesterTitle] as [string, ...string[]],)
         .optional(),
       year: z
-        .string({
-          required_error: 'Year is required ',
-        })
+        .string()
         .optional(),
       code: z
         .enum([...AcademicSemesterCode] as [string, ...string[]])
         .optional(),
       startMonth: z
-        .enum([...academicSemesterMonths] as [string, ...string[]], {
-          required_error: 'Start month is needed',
-        })
+        .enum([...academicSemesterMonths] as [string, ...string[]],)
         .optional(),
       endMonth: z
-        .enum([...academicSemesterMonths] as [string, ...string[]], {
-          required_error: 'End month is needed',
-        })
+        .enum([...academicSemesterMonths] as [string, ...string[]],)
         .optional(),
     }),
   })

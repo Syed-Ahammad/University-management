@@ -5,6 +5,9 @@ import httpStatus from 'http-status';
 import Routes from './app/routes';
 import { UserRoutes } from './app/modules/users/user.routes';
 import { AcademicSemesterRoutes } from './app/modules/academicSemester/academicSemester.routes';
+import { IAcademicSemester } from './app/modules/academicSemester/academicSemester.interface';
+import { generateFacultyId, generateStudentId } from './app/modules/users/user.utility';
+import { AcademicSemester } from './app/modules/academicSemester/academicSemester.model';
 // import ApiError from './errors/ApiError'
 const app: Application = express();
 
@@ -37,6 +40,10 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   });
   next();
 });
+
+const testId = async ()=>{ const testId = await generateFacultyId();
+   console.log(testId)}
+testId();
 
 // testing
 /* app.get('/', async (req: Request, res: Response , next: NextFunction ) => {

@@ -1,11 +1,10 @@
-import { AcademicSemester } from './academicSemester.model';
 import {
-  IAcademicSemesterCode,
-  IAcademicSemesterMonth,
+  IAcademicSemesterCodes,
+  IAcademicSemesterMonths,
   IAcademicSemesterTitles,
 } from './academicSemester.interface';
 
-export const academicSemesterMonths: IAcademicSemesterMonth[] = [
+export const academicSemesterMonths: IAcademicSemesterMonths[] = [
   'January',
   'February',
   'March',
@@ -25,7 +24,7 @@ export const AcademicSemesterTitle: IAcademicSemesterTitles[] = [
   'Summer',
   'Fall',
 ];
-export const AcademicSemesterCode: IAcademicSemesterCode[] = ['01', '02', '03'];
+export const AcademicSemesterCode: IAcademicSemesterCodes[] = ['01', '02', '03'];
 
 export const AcademicSemesterTitleCodeMapper: { [key: string]: string } = {
   Autumn: '01',
