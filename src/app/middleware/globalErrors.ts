@@ -8,14 +8,15 @@ import handleValidationError from '../../errors/handleValidationError';
 
 import { ZodError } from 'zod';
 import handleCastError from '../../errors/handleCastError';
-import handleZodError from '../../errors/handleZodError';
 import { IGenericErrorMessage } from '../../interfaces/error';
 import { errorLogger } from '../../shared/logger';
+import handleZodError from '../../errors/handleZodError';
 
 const globalErrorHandler: ErrorRequestHandler = (
   error,
   req: Request,
-  res: Response
+  res: Response,
+  next: NextFunction
 ) => {
   config.env === 'development'
     ? console.log(`🐱‍🏍 globalErrorHandler ~~`, { error })
@@ -30,20 +31,25 @@ const globalErrorHandler: ErrorRequestHandler = (
     statusCode = simplifiedError.statusCode;
     message = simplifiedError.message;
     errorMessages = simplifiedError.errorMessages;
+    // console.log(error)
   } else if (error instanceof ZodError) {
     const simplifiedError = handleZodError(error);
-    statusCode = simplifiedError.statusCode;
-    message = simplifiedError.message;
-    errorMessages = simplifiedError.errorMessages;
+    statusCode = simplifiedError?.statusCode;
+    message = simplifiedError?.message;
+    errorMessages = simplifiedError?.errorMessages;
+    console.log(error)
   } else if (error?.name === 'CastError') {
     const simplifiedError = handleCastError(error);
     statusCode = simplifiedError.statusCode;
     message = simplifiedError.message;
     errorMessages = simplifiedError.errorMessages;
-  } else if (error instanceof ApiError) {
+    // console.log(error)
+  }
+   else if (error instanceof ApiError) {
+    // console.log(error)
     statusCode = error?.statusCode;
     message = error.message;
-    errorMessages = error
+    errorMessages = error?.message
       ? [
           {
             path: '',
@@ -52,6 +58,7 @@ const globalErrorHandler: ErrorRequestHandler = (
         ]
       : [];
   } else if (error instanceof Error) {
+    console.log(error)
     message = error?.message;
     errorMessages = error?.message
       ? [

@@ -1,28 +1,40 @@
-import { IAcademicFaculty, IAcademicFacultyFilters } from "./academicFaculty.interface";
-import { AcademicFaculty } from "./academicFaculty.model";
-import { IPaginationOptions } from "../../../interfaces/pagination";
-import { IGenericResponse } from "../../../interfaces/common";
-import { paginationHelper } from "../../../helpers/paginationHelper";
-import { academicFacultySearchableFields } from "./academicFaculty.constant";
-import { SortOrder } from "mongoose";
+import {
+  IAcademicFaculty,
+  IAcademicFacultyFilters,
+} from './academicFaculty.interface';
+import { AcademicFaculty } from './academicFaculty.model';
+import { IPaginationOptions } from '../../../interfaces/pagination';
+import { IGenericResponse } from '../../../interfaces/common';
+import { paginationHelper } from '../../../helpers/paginationHelper';
+import { academicFacultySearchableFields } from './academicFaculty.constant';
+import { SortOrder } from 'mongoose';
 
-const createFaculty = async(payload: IAcademicFaculty): Promise<IAcademicFaculty> =>{
+const createFaculty = async (
+  payload: IAcademicFaculty
+): Promise<IAcademicFaculty> => {
   const result = await AcademicFaculty.create(payload);
   return result;
-}
+};
 
-const updateFaculty = async(id: string, payload: IAcademicFaculty): Promise<IAcademicFaculty | null>=>{
-  const result = await AcademicFaculty.findOneAndUpdate({_id: id}, payload, {new: true});
+const updateFaculty = async (
+  id: string,
+  payload: IAcademicFaculty
+): Promise<IAcademicFaculty | null> => {
+  const result = await AcademicFaculty.findOneAndUpdate({ _id: id }, payload, {
+    new: true,
+  });
   return result;
-}
+};
 
-const getAllFaculty = async (filters: IAcademicFacultyFilters, paginationOptions: IPaginationOptions): Promise<IGenericResponse<IAcademicFaculty[]>> => {
-
-  const { searchTerms ,...filtersData } = filters;
+const getAllFaculty = async (
+  filters: IAcademicFacultyFilters,
+  paginationOptions: IPaginationOptions
+): Promise<IGenericResponse<IAcademicFaculty[]>> => {
+  const { searchTerms, ...filtersData } = filters;
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHelper.calculationPagination(paginationOptions);
 
-    const andConditions = [];
+  const andConditions = [];
 
   // Search needs $or for searching in specified fields
   if (searchTerms) {
@@ -34,17 +46,17 @@ const getAllFaculty = async (filters: IAcademicFacultyFilters, paginationOptions
         },
       })),
     });
-  };
+  }
 
   // Filters needs $and to fulfill all the conditions
-  // console.log(filtersData)
-  // if (Object.keys(filtersData).length) {
-  //   andConditions.push({
-  //     $and: Object.entries(filtersData).map(([field, value]) => ({
-  //       [field]: value,
-  //     })),
-  //   });
-  // }
+  // console.log(filtersData);
+  if (Object.keys(filtersData).length) {
+    andConditions.push({
+      $and: Object.entries(filtersData).map(([field, value]) => ({
+        [field]: value,
+      })),
+    });
+  }
 
   // Dynamic sort needs  fields to  do sorting
   const sortConditions: { [key: string]: SortOrder } = {};
@@ -62,7 +74,6 @@ const getAllFaculty = async (filters: IAcademicFacultyFilters, paginationOptions
     .limit(limit);
 
   const total = await AcademicFaculty.countDocuments(whereConditions);
-
 
   // const andConditions = [
   //   {
@@ -99,21 +110,23 @@ const getAllFaculty = async (filters: IAcademicFacultyFilters, paginationOptions
   };
 };
 
-const getSingleFaculty = async (id: String): Promise<IAcademicFaculty | null> => {
-const result = await AcademicFaculty.findById(id)
+const getSingleFaculty = async (
+  id: string
+): Promise<IAcademicFaculty | null> => {
+  const result = await AcademicFaculty.findById(id);
 
-return result;
+  return result;
 };
 
-const deleteFaculty = async (id: String): Promise<IAcademicFaculty | null>=> {
+const deleteFaculty = async (id: string): Promise<IAcademicFaculty | null> => {
   const result = await AcademicFaculty.findByIdAndDelete(id);
   return result;
-}
+};
 
 export const AcademicFacultyService = {
   createFaculty,
   getAllFaculty,
   updateFaculty,
   getSingleFaculty,
-  deleteFaculty
-}
+  deleteFaculty,
+};

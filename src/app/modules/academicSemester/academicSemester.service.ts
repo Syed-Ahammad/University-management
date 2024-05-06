@@ -1,4 +1,4 @@
-import mongoose, { SortOrder } from 'mongoose';
+import { SortOrder } from 'mongoose';
 import ApiError from '../../../errors/ApiError';
 import { paginationHelper } from '../../../helpers/paginationHelper';
 import { IGenericResponse } from '../../../interfaces/common';
@@ -100,7 +100,6 @@ const getSingleSemester = async (
   const result = await AcademicSemester.findById(id);
   return result;
 };
-
 
 const updateSemester = async (
   id: string,

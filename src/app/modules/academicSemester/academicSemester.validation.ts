@@ -8,14 +8,14 @@ import {
 const CreateAcademicSemesterZodSchema = z.object({
   body: z.object({
     title: z.enum([...AcademicSemesterTitle] as [string, ...string[]], {
-      required_error: 'code is required',
+      required_error: 'Title is required',
     }),
     year: z.string({
       required_error: 'year is required',
     }),
     code: z.enum([...AcademicSemesterCode] as [string, ...string[]], {
       required_error: 'code is required',
-    }),
+    }).optional(),
     startMonth: z.enum([...academicSemesterMonths] as [string, ...string[]], {
       required_error: 'start month is needed',
     }),
@@ -31,19 +31,17 @@ const UpdateAcademicSemesterZodSchema = z
   .object({
     body: z.object({
       title: z
-        .enum([...AcademicSemesterTitle] as [string, ...string[]],)
+        .enum([...AcademicSemesterTitle] as [string, ...string[]])
         .optional(),
-      year: z
-        .string()
-        .optional(),
+      year: z.string().optional(),
       code: z
         .enum([...AcademicSemesterCode] as [string, ...string[]])
         .optional(),
       startMonth: z
-        .enum([...academicSemesterMonths] as [string, ...string[]],)
+        .enum([...academicSemesterMonths] as [string, ...string[]])
         .optional(),
       endMonth: z
-        .enum([...academicSemesterMonths] as [string, ...string[]],)
+        .enum([...academicSemesterMonths] as [string, ...string[]])
         .optional(),
     }),
   })

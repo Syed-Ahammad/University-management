@@ -5,31 +5,28 @@ import { IUser, UserModel } from './user.interface';
 
 const userSchema = new Schema<IUser>(
   {
-    id:
-    {
+    id: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
-    role:
-    {
+    role: {
       type: String,
-      required: true
+      required: true,
     },
-    password:
-    {
+    password: {
       type: String,
-      required: true
+      required: true,
     },
     student: {
       type: Schema.Types.ObjectId,
-      ref: "Student"
+      ref: 'Student',
     },
-    /* faculty: {
+    faculty: {
       type: Schema.Types.ObjectId,
       ref: "Faculty"
     },
-    Admin: {
+   /*  Admin: {
       type: Schema.Types.ObjectId,
       ref: "Admin"
     }, future */
@@ -38,7 +35,7 @@ const userSchema = new Schema<IUser>(
     timestamps: true,
     toJSON: {
       virtuals: true,
-    }
+    },
   }
 );
 

@@ -1,5 +1,5 @@
-import { Model, Types } from "mongoose";
-import { IAcademicFaculty } from "../academicFaculty/academicFaculty.interface";
+import { Model, Types } from 'mongoose';
+import { IAcademicFaculty } from '../academicFaculty/academicFaculty.interface';
 
 export type IAcademicDepartment = {
   title: string;
@@ -7,11 +7,12 @@ export type IAcademicDepartment = {
   academicFaculty: Types.ObjectId | IAcademicFaculty;
 };
 
-
 export type IAcademicDepartmentFilters = {
   searchTerms?: string;
   title?: string;
-}
+};
 
-
-export type AcademicDepartmentModel = Model<IAcademicDepartment, Record<string,unknown>>;
+export type AcademicDepartmentModel = Model<
+  IAcademicDepartment,
+  Record<string, unknown>
+>;

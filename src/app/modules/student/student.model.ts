@@ -1,6 +1,6 @@
-import { Schema, model } from "mongoose";
-import { IStudent, StudentModel } from "./student.interface";
-import { bloodGroup, gender } from "./student.constant";
+import { Schema, model } from 'mongoose';
+import { IStudent, StudentModel } from './student.interface';
+import { bloodGroup, gender } from './student.constant';
 
 export const StudentSchema = new Schema<IStudent, StudentModel>(
   {
@@ -78,7 +78,7 @@ export const StudentSchema = new Schema<IStudent, StudentModel>(
         motherOccupation: {
           type: String,
           required: true,
-        }
+        },
       },
     },
     localGuardian: {
@@ -86,17 +86,17 @@ export const StudentSchema = new Schema<IStudent, StudentModel>(
       type: {
         name: {
           type: String,
-          required: true
+          required: true,
         },
         occupation: {
           type: String,
-          required: true
+          required: true,
         },
         contactNumber: {
           type: String,
-          required: true
+          required: true,
         },
-      }
+      },
     },
     profileImage: {
       type: String,
@@ -105,24 +105,24 @@ export const StudentSchema = new Schema<IStudent, StudentModel>(
     academicFaculty: {
       type: Schema.Types.ObjectId,
       ref: 'AcademicFaculty',
-      required: false
+      required: false,
     },
     academicDepartment: {
       type: Schema.Types.ObjectId,
       ref: 'AcademicDepartment',
-      required: true
+      required: true,
     },
     academicSemester: {
       type: Schema.Types.ObjectId,
       ref: 'AcademicSemester',
-      required: true
+      required: true,
     },
   },
   {
     timestamps: true,
     toJSON: {
       virtuals: true,
-    }
+    },
   }
 );
 

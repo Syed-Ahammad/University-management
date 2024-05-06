@@ -1,9 +1,7 @@
 import { IAcademicDepartment } from '../academicDepartment/academicDepartment.interface';
 import { IAcademicFaculty } from '../academicFaculty/academicFaculty.interface';
 import { IAcademicSemester } from '../academicSemester/academicSemester.interface';
-import { gender } from './student.constant';
-import { InferSchemaType, Model, Types } from "mongoose";
-
+import { Model, Types } from 'mongoose';
 
 export type UserName = {
   firstName: string;
@@ -16,21 +14,20 @@ export type Guardian = {
   fatherOccupation: string;
   motherName: string;
   motherOccupation: string;
-}
+};
 
 export type LocalGuardian = {
   name: string;
   occupation: string;
   contactNumber: string;
-}
-
+};
 
 export type IStudent = {
   id: string;
   name: UserName;
   dateOfBirth: string;
-  gender: "male" | "female";
-  bloodGroup: "A+"|"B+"| "A-"| "B-"| "AB+"| "AB-"| "O+"| "O-";
+  gender: 'male' | 'female';
+  bloodGroup: 'A+' | 'B+' | 'A-' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-';
   email: string;
   contactNo: string;
   emergencyContactNo: string;
@@ -45,3 +42,12 @@ export type IStudent = {
 };
 
 export type StudentModel = Model<IStudent, Record<string, unknown>>;
+
+export type IStudentFilters = {
+  searchTerm?: string;
+  id?: string;
+  bloodGroup?: string;
+  email?: string;
+  contactNo?: string;
+  emergencyContactNo?: string;
+}
